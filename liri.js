@@ -11,6 +11,7 @@ var spotify = new Spotify(keys.spotify)
 
 
 var userChoice = process.argv[2];
+var userInput = process.argv[3];
 
 function songs(choice) {
     
@@ -22,6 +23,7 @@ function songs(choice) {
             console.log('Error occurred: ' + err);
             return;
         }
+// console.log(data);
 
         var song = data.tracks.items;
         console.log("Artist: " + song[0].artists[0].name);
@@ -31,14 +33,60 @@ function songs(choice) {
 });
 }
 
+ajax({
+    url: 'https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp',
+    data: {
+       format: 'json'
+    },
+    error: function() {
+       $('#info').html('<p>An error has occurred</p>');
+    },
+    dataType: 'jsonp',
+    success: function concerts(){
+       var $title = $('<h1>').text(artist_id[0].VenueData);
+       var $description = $('<p>').text(artist_id[0].VenueData);
+       $('#info')
+          .append($title)
+          .append($description);
+    },
+    type: 'GET'
+ });
+
+ console.log(data);
+
+
+// function concerts (choice) {
+    
+//     if (!choice){
+//         choice = '';
+//     }
+//     concert.search({ type: 'concert', query: choice }, function(err, data) {
+//         if (err){
+//             console.log('Error occurred: ' + err);
+//             return;
+//         }
+// console.log(data);
+
+//         // var song = data.tracks.items;
+//         // console.log("Venue: " + name[0]);
+//         // console.log("Location : " + City[0]State[0].name);
+//         // console.log("Date: " + song[0].preview_url);
+// });
+// }
+
+
+
 
 
 switch (userChoice) {
     case "concert-this":
-    console.log("concert")
+    console.log("concerts")
+    concerts(userInput);
     break;
     case "spotify-this-song":
     console.log("spotify")
+
+    songs(userInput);
     break;
     case "movie-this":
     console.log("movie")
