@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-var Spotify = require('node-spotify-api');
+var Spotify = require("node-spotify-api");
 var axios = require("axios");
 var moment = require("moment");
 
@@ -33,26 +33,29 @@ function songs(choice) {
 });
 }
 
-ajax({
-    url: 'https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp',
-    data: {
-       format: 'json'
-    },
-    error: function() {
-       $('#info').html('<p>An error has occurred</p>');
-    },
-    dataType: 'jsonp',
-    success: function concerts(){
-       var $title = $('<h1>').text(artist_id[0].VenueData);
-       var $description = $('<p>').text(artist_id[0].VenueData);
-       $('#info')
-          .append($title)
-          .append($description);
-    },
-    type: 'GET'
- });
 
- console.log(data);
+
+
+// request({
+//     url: 'https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp',
+//     data: {
+//        format: 'json'
+//     },
+//     error: function() {
+//        $('#info').html('<p>An error has occurred</p>');
+//     },
+//     dataType: 'jsonp',
+//     success: function concerts(){
+//        var title = $('<h1>').text(artist_id[0].VenueData);
+//        var description = $('<p>').text(artist_id[0].VenueData);
+//        $('#info')
+//           .append(title)
+//           .append(description);
+//     },
+//     type: 'GET'
+//  });
+
+//  console.log(data);
 
 
 // function concerts (choice) {
